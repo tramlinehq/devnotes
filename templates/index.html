@@ -1,10 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">
-	This is my blog made with Zola.
-</h1>
 
-<p>Click <a href="{{ get_url(path="@/stream/_index.md") }}">here</a> to see my posts.</p>
+<div class="feed">
+	{% for page in paginator.pages %}
+	<div class="update">
+		<div class="update-t">
+			{{ page.date | date(format="%Y-%m-%d %H:%M") }}
+			<span>{{ page.extra.who | safe }}</span>
+		</div>
+		<div class="update-s">{{ page.content | safe }}</div>
+	</div>
+	{% endfor %}
+</div>
+
+<nav class="pageControls">
+	{% if paginator.previous %}
+	<a class="pageButton" href="{{ paginator.previous }}">←</a>
+	{% endif %}
+	
+	{% if paginator.next %}
+	<a class="pageButton" href="{{ paginator.next }}">→</a>
+	{% endif %}
+</nav>
 
 {% endblock content %}
