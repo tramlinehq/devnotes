@@ -50,12 +50,19 @@ body {
     border-bottom: 8px solid #111111;
 }
 
-button {
+input,
+button,
+textarea {
     font-size: 1em;
     padding: .5em .8em;
     color: var(--primary-text);
     font-family: system-ui, sans-serif;
     tab-size: 4;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--secondary-text);
 }
 
 header,
@@ -118,6 +125,12 @@ main {
 
 .mb-3 {
 	margin-bottom: 3em;
+}
+
+#search {
+    position: relative;
+    margin-bottom: 2em;
+    overflow: hidden;
 }
 
 .pageControls {

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="{{ get_url(path="style.css") }}">
   <title>jots</title>
 </head>
 
@@ -32,9 +32,11 @@
   {% endblock %}
 </main>
 
-<script src="/main.js"></script>
+<script type="text/javascript" src="{{ get_url(path="elasticlunr.min.js") }}"></script>
+<script type="text/javascript" src="{{ get_url(path="search_index.en.js") }}"></script>
+<script src="{{ get_url(path="main.js") }}"></script>
 <script type="text/javascript">
-  updateScheme();
+	updateScheme();
 </script>
 </body>
 </html>
