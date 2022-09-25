@@ -1,4 +1,4 @@
-base_url = "https://https://tramlinehq.github.io/jots"
+base_url = "https://tramlinehq.github.io/jots"
 compile_sass = true
 build_search_index = true
 generate_feed = true
