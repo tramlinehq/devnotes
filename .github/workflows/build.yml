@@ -1,5 +1,5 @@
-
-on: pushname: Build and deploy GH Pages
+on: push
+name: Build and deploy GH Pages
 jobs:
   build:
     runs-on: ubuntu-latest
