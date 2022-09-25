@@ -7,6 +7,8 @@
 	<div class="update">
 		<div class="update-t">
 			{{ page.date | date(format="%Y-%m-%d %H:%M") }}
+			<br/>
+			<span>➡</span>
 			<span>{{ page.extra.who | safe }}</span>
 		</div>
 		<div class="update-s">{{ page.content | safe }}</div>
