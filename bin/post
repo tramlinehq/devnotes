@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+while getopts a: flag
+do
+	case "${flag}" in
+		a) author=${OPTARG};;
+		*) exit 0;;
+	esac
+done
+
+if [[ ! -n "$author" ]]
+then
+	echo "Did nothing."
+	exit 0
+else
+	postDate="$(date +"%Y-%m-%dT%H:%M:%S")"
+	postPath="content/post-$postDate"
+
+	cat << EOF > "$postPath"
++++
+date = $postDate
+[extra]
+who = $author
++++
+
+EOF
+	
+fi
