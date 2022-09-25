@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="feed">
+	{% for page in paginator.pages %}
+	<div class="update">
+		<div class="update-t">{{ page.date | date(format="%Y-%m-%d %H:%M") }}</div>
+		<div class="update-s">{{ page.content | safe }}</div>
+	</div>
+	{% endfor %}
+</div>
+
+<nav class="pageControls">
+	{% if paginator.previous %}
+	<a class="pageButton" href="{{ paginator.previous }}">←</a>
+	{% endif %}
+	
+	{% if paginator.next %}
+	<a class="pageButton" href="{{ paginator.next }}">→</a>
+	{% endif %}
+</nav>
+
+{% endblock content %}

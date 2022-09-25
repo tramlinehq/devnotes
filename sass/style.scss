@@ -1,0 +1,297 @@
+html,
+body {
+    margin: 0;
+}
+
+body {
+    --primary-bg: #fdfeff;
+    --primary-text: #111111;
+    --secondary-bg: #eeeef3;
+    --secondary-text: #9b9b9b;
+    --hover-bg: #dde1e5;
+    --active-bg: #cdcfd2;
+
+    --dark-primary-bg: #141516;
+    --dark-primary-text: #ebebeb;
+    --dark-secondary-bg: #30373a;
+    --dark-secondary-text: #a4a7a9;
+    --dark-hover-bg: #474c50;
+    --dark-active-bg: #626569;
+}
+
+.dark {
+    --primary-bg: var(--dark-primary-bg);
+    --primary-text: var(--dark-primary-text);
+    --secondary-bg: var(--dark-secondary-bg);
+    --secondary-text: var(--dark-secondary-text);
+    --hover-bg: var(--dark-hover-bg);
+    --active-bg: var(--dark-active-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+    body:not(.light) {
+        --primary-bg: var(--dark-primary-bg);
+        --primary-text: var(--dark-primary-text);
+        --secondary-bg: var(--dark-secondary-bg);
+        --secondary-text: var(--dark-secondary-text);
+        --hover-bg: var(--dark-hover-bg);
+        --active-bg: var(--dark-active-bg);
+    }
+}
+
+body {
+    font-family: 'Bitter', system-ui, sans-serif;
+    color: var(--primary-text);
+    background: var(--primary-bg);
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    border-bottom: 8px solid #111111;
+}
+
+button {
+    font-size: 1em;
+    padding: .5em .8em;
+    color: var(--primary-text);
+    font-family: system-ui, sans-serif;
+    tab-size: 4;
+}
+
+header,
+h1,
+main {
+    width: calc(100% - 32px);
+    max-width: 860px;
+    margin: 1em auto;
+}
+
+header {
+	margin-bottom: 2em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .logo {
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 1em;
+}
+
+header a,
+header button {
+    display: inline;
+    cursor: pointer;
+    color: var(--primary-text);
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    text-decoration: none;
+    padding: .5em 0;
+}
+
+header a:hover,
+header button:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    margin-top: 0.75em;
+    margin-bottom: 0.25em;
+    line-height: 1.4em;
+}
+
+main {
+    margin-bottom: 3em;
+}
+
+.border-b {
+	border-bottom: 1px solid var(--secondary-text);
+}
+
+.mb-3 {
+	margin-bottom: 3em;
+}
+
+.pageControls {
+    float: right;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .75em;
+}
+
+.pageControls a {
+    color: var(--primary-text);
+    text-decoration: none;
+}
+
+.pageControls a:hover {
+    text-decoration: underline;
+}
+
+a.pageButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: 50%;
+    background: var(--secondary-bg);
+}
+
+a.pageButton:hover {
+    background: var(--hover-bg);
+    text-decoration: none;
+}
+
+.message {
+    font-style: italic;
+    color: var(--secondary-text);
+    margin-bottom: 2em;
+}
+
+.update {
+    margin-bottom: 2.5em;
+    word-break: break-word;
+}
+
+.update .update-t {
+    font-size: 14px;
+    color: var(--secondary-text);
+    margin-bottom: -.5em;
+}
+
+.update .update-t a {
+    color: var(--secondary-text);
+    text-decoration: none;
+}
+
+.update .update-t a:hover {
+    text-decoration: underline;
+}
+
+.update-t .relativestamp {
+    margin-bottom: 6px;
+}
+
+.update h1,
+.update h2,
+.update h3 {
+    margin: .75em 0 .5em 0;
+    line-height: 1.4em;
+}
+
+.update h1 {
+    font-size: 1.75em;
+}
+
+.update h2 {
+    font-size: 1.5em;
+}
+
+.update h3 {
+    font-size: 1.2em;
+}
+
+.update h4,
+.update h5,
+.update h6 {
+    font-size: 1em;
+}
+
+.update p,
+.update li {
+    line-height: 1.5em;
+    max-width: 64ch;
+}
+
+.update strike {
+    color: var(--secondary-text);
+}
+
+.update img {
+    max-width: 100%;
+    max-height: 500px;
+    border-radius: 6px;
+}
+
+.update a {
+    color: var(--primary-text);
+    text-decoration: underline;
+}
+
+.update ul,
+.update ol {
+    padding-left: 3ch;
+}
+
+.update pre,
+.update code {
+    font-size: 1em;
+    font-family: 'IBM Plex Mono', 'Menlo', 'Monaco', monospace;
+    /*
+     * In Safari (2021), word-break: break-word from `.update` combined with
+     * certain contents of <pre> tags that do not begin lines with whitespace
+     * break line-wrapping behavior. This inversion of word-break works around
+     * that Safari bug (or at least, what appears to be a browser bug, as
+     * Chrome does not reproduce).
+     */
+    word-break: initial;
+}
+
+.update pre {
+    border-radius: 6px;
+    box-sizing: border-box;
+    padding: 12px 8px;
+    overflow-x: auto;
+}
+
+.update code {
+    padding: 2px 10px;
+    border-radius: 6px;
+}
+
+.update pre code {
+    padding: 0;
+}
+
+.update blockquote {
+    margin: 0;
+    border-left: 4px solid var(--active-bg);
+    padding-left: 1em;
+    display: block;
+}
+
+@media only screen and (min-width: 760px) {
+    .update {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 1.5em;
+    }
+    .update-t {
+        flex-grow: 0;
+        flex-shrink: 0;
+        width: 134px;
+        margin-top: 3px;
+    }
+    .update-s {
+        width: 0;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+    .update-s :first-child {
+        margin-top: 0;
+    }
+}
