@@ -1,4 +1,4 @@
-base_url = "https://tramlinehq.github.io/jots"
+base_url = "https://notes.tramline.app"
 compile_sass = true
 build_search_index = true
 generate_feed = true
@@ -6,5 +6,5 @@ generate_feed = true
 [markdown]
 highlight_code = true
 highlight_theme = "kronuz"
-	
+
 [extra]
