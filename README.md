@@ -1,6 +1,6 @@
-### deps
+# devnotes
 
-Install [Zola](https://www.getzola.org/documentation/getting-started/installation).
+[![License](https://img.shields.io/github/license/tramlinehq/devnotes)](https://github.com/tramlinehq/macige/blob/master/LICENSE)
 
 ### add post
 
