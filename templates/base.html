@@ -4,13 +4,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter">
-  <link rel="stylesheet" href="{{ get_url(path="style.css") }}">
-  <title>notes | tramline</title>
+  <link rel="stylesheet" href="{{ get_url(path="styles/styles.css") }}">
+  <title>devnotes | tramline</title>
+  <style type="text/css">
+   body {
+     text-rendering: optimizeLegibility;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+   }
+  </style>
 </head>
 
-<body>
-<header>
+<body class="bg-[#f6f5e9] bg-no-repeat bg-gradient-to-br min-h-screen">
+  <header>
+
   <svg width="68pt" viewBox="0 0 128 128">
     <g fill-rule="evenodd" fill="#333">
       <path d="m18.59 101.25c-4.6836 0-4.6836 9.3711 0 9.3711 4.5352 0 4.5352-9.3711 0-9.3711zm0 7.1016c-1.6641 0-1.6641-4.9883 0-4.9883 1.6641 0 1.6641 4.9883 0 4.9883z"/>
@@ -28,6 +35,21 @@
 <div class="border-b mb-3"></div>
 
 <main>
+  <div class="px-2">
+    <div class="mb-24 mt-16 px-4">
+      <h1 class="text-slate-800 font-normal font-serif my-8 text-center text-8xl tracking-tighter">
+        Development Thoughts
+      </h1>
+      <div class="container max-w-[625px] mx-auto
+                  prose prose-lg
+                  prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+                  hover:prose-a:border-slate-200">
+        <p>
+          Short, micro-posts on programming, patterns and difficulties as we build Tramline in public. Follow along with this feed, if you find these tidbits interesting.
+        </p>
+      </div>
+    </div>
+  </div>
   {% block content %}
   {% endblock %}
 </main>
@@ -35,8 +57,6 @@
 <script type="text/javascript" src="{{ get_url(path="elasticlunr.min.js") }}"></script>
 <script type="text/javascript" src="{{ get_url(path="search_index.en.js") }}"></script>
 <script src="{{ get_url(path="main.js") }}"></script>
-<script type="text/javascript">
-	updateScheme();
-</script>
+<script type="text/javascript"> updateScheme(); </script>
 </body>
 </html>
