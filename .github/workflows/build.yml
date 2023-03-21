@@ -5,12 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
-      - name: add exception
-        run: git config --global --add safe.directory /github/workspace
       - name: checkout
         uses: actions/checkout@v3.0.0
       - name: build_and_deploy
-        uses: shalzz/zola-deploy-action@v0.16.1
+        uses: shalzz/zola-deploy-action@v0.17.2
         env:
           # Target branch
           PAGES_BRANCH: gh-pages
