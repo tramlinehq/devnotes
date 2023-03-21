@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+// This is extracted CSS from tramline.app to render the tramline.app header
+// It is probably not very good CSS.
 
 @font-face {
   font-family:objektiv-mk1;
@@ -446,15 +445,20 @@ img {
 #style-4pCWX.style-4pCWX {
   -webkit-user-select: text;
 }
+#style-J5dMq.style-J5dMq {
+  opacity: 1;
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+  transform-style: preserve-3d;
+}
 
 h1 {
-    margin: 0 0 24px;
-    padding-top: 10px;
-    font-family: new-spirit,sans-serif;
-    color: #2c323a;
-    font-size: 44px;
-    line-height: 1em;
-    font-weight: 500;
+  margin: 0 0 24px;
+  padding-top: 10px;
+  font-family: new-spirit,sans-serif;
+  color: #2c323a;
+  font-size: 44px;
+  line-height: 1em;
+  font-weight: 500;
 }
 
 .heading-large {
@@ -470,12 +474,4 @@ h1 {
     border-bottom: 8px #c4f34d;
     opacity: 1;
     text-decoration: underline;
-}
-
-
-/* These were inline style tags. Uses id+class to override almost everything */
-#style-J5dMq.style-J5dMq {
-   opacity: 1;
-    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-    transform-style: preserve-3d;
 }
