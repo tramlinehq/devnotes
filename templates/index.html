@@ -4,11 +4,11 @@
 
 <div class="feed">
 	{% for page in paginator.pages %}
-   <article class="container max-w-[900px] mx-auto my-8 px-4">
+  <article class="container max-w-[900px] mx-auto my-8 px-2">
     <hr class="border-slate-200 mx-auto max-w-7xl">
     <div class="my-8"></div>
     <div class="md:flex">
-      <div class="md:basis-[100px] md:flex-grow-0 md:flex-shrink-0 md:mr-4">
+      <div class="md:basis-[100px] md:flex-grow-0 md:flex-shrink-0 md:mr-4 px-1 mb-8">
         <div class="font-medium my-2 leading-normal text-xs">
           <div class="tracking-wide">{{ page.date | date(format="%Y / %b %d — %H:%M") }}</div>
           <div class="mt-2 mb-2 underline">{{ page.extra.who | safe }}</div>
@@ -23,7 +23,7 @@
                       prose prose-md
                       prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
                       hover:prose-a:border-b-slate-200
-                      prose-code:prose-a:text-sm prose-code:prose-p:text-sm
+                      prose-pre:prose-code:prose-a:text-sm prose-code:prose-p:text-sm
                       prose-h1:font-bold prose-h1:text-base
                       prose-p:font-serif
                       prose-p:prose-blockquote:font-sans
