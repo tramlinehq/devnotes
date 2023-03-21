@@ -1,11 +1,13 @@
+{% import "macros.html" as macros %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <script defer data-domain="devnotes.tramline.app" src="https://plausible.io/js/script.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{{ get_url(path="styles/header.css") }}">
     <link rel="stylesheet" href="{{ get_url(path="styles/styles.css") }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ get_url(path="favicon.png") }}>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ get_url(path="favicon.png") }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ get_url(path="favicon.png") }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ get_url(path="favicon.png") }}">
     <title>Tramline | Engineering notes</title>
@@ -19,31 +21,7 @@
   </head>
 
   <body class="bg-[#f6f5e9] bg-no-repeat bg-gradient-to-br min-h-screen border-b-8 border-black">
-    <header>
-      <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="nav-bar w-nav">
-        <div class="nav-container w-container">
-          <div class="logo-div">
-            <a href="https://tramline.app" aria-current="page" class="nav-logo w-inline-block w--current">
-              <img src="https://uploads-ssl.webflow.com/6332d9065b0520e36c207fdf/63dfb9ac01f0360495d5d0cd_tram-webclip.png" loading="eager" width="50" alt="" class="logo">
-            </a>
-          </div>
-          <nav role="navigation" class="nav-content w-nav-menu">
-            <div class="nav-menu">
-              <a href="/" aria-current="page" class="nav-link tramline w-nav-link w--current style-hNwNo" id="style-hNwNo">
-                Tramline
-                <p class="text-sm">engineering notes</p>
-              </a>
-            </div>
-          </nav>
-          <div class="menu-button w-nav-button style-khqSK" aria-label="menu" role="button" tabindex="0" aria-controls="w-nav-overlay-0" aria-haspopup="menu" aria-expanded="false" id="style-khqSK">
-            <img src="https://uploads-ssl.webflow.com/6332d9065b0520e36c207fdf/6332d9075b05207666208010_Menu%20Icon.svg" loading="lazy" width="24" alt="" class="menu-icon">
-          </div>
-        </div>
-        <div class="w-nav-overlay" data-wf-ignore="" id="w-nav-overlay-0">
-        </div>
-      </div>
-    </header>
-
+    {{ macros::header() }}
     <div class="border-b mb-3"></div>
     <main>
       <div class="px-2">
@@ -51,19 +29,19 @@
           <h1 data-w-id="18a9bc4c-33dd-e424-566d-cf277b93ef10" class="text-center heading-large style-J5dMq my-8" id="style-J5dMq">
             Short notes from engineering
           </h1>
-
           <div class="container max-w-[625px] mx-auto text-center
                       prose prose-lg
                       prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
                       hover:prose-a:border-slate-200">
             <p>
-              Micro-posts on programming and patterns as we continue to build Tramline in public. Follow this <a href="/atom.xml">feed</a>, if you find these tidbits interesting.
+              Micro-posts on programming and patterns as we continue to build Tramline in public.
+              Follow this <a href="/atom.xml">feed</a>, if you find these tidbits interesting.
             </p>
           </div>
         </div>
       </div>
       {% block content %}
-      {% endblock %}
+      {% endblock content %}
     </main>
   </body>
 </html>

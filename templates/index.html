@@ -1,42 +1,11 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
 
 {% block content %}
-
 <div class="feed">
 	{% for page in paginator.pages %}
-  <article class="container max-w-[900px] mx-auto my-8 px-2">
-    <hr class="border-slate-200 mx-auto max-w-7xl">
-    <div class="my-8"></div>
-    <div class="md:flex">
-      <div class="md:basis-[100px] md:flex-grow-0 md:flex-shrink-0 md:mr-4 px-1 ml-3 mb-8">
-        <div class="font-medium my-2 leading-normal text-xs">
-          <div class="tracking-wide">{{ page.date | date(format="%Y / %b %d — %H:%M") }}</div>
-          <div class="mt-2 mb-2 underline">{{ page.extra.who | safe }}</div>
-          <a href="{{ page.permalink | safe }}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24"><g fill="none" class="nc-icon-wrapper"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1 0 1.71-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="#212121"></path></g></svg>
-          </a>
-        </div>
-      </div>
-      <div class="container max-w-[900px] mx-auto px-4">
-        <div class="md:flex-grow md:ml-4">
-          <div class="max-w-none
-                      prose prose-md
-                      prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
-                      hover:prose-a:border-b-slate-200
-                      prose-pre:prose-code:prose-a:text-sm prose-code:prose-p:text-sm
-                      prose-h1:font-bold prose-h1:text-base
-                      prose-p:font-serif
-                      prose-p:prose-blockquote:font-sans
-                      prose-strong:font-sans
-                      prose-ol:font-serif
-                      prose-ul:font-serif">
-		        {{ page.content | safe }}
-          </div>
-        </div>
-	    </div>
-    </div>
-  </article>
-	{% endfor %}
+  {{ macros::article(page=page) }}
+  {% endfor %}
 </div>
 
 <nav class="pageControls">
@@ -48,5 +17,4 @@
 	<a class="pageButton" href="{{ paginator.next }}">→</a>
 	{% endif %}
 </nav>
-
 {% endblock content %}
