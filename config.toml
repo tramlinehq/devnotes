@@ -1,4 +1,4 @@
-base_url = "https://notes.tramline.app"
+base_url = "https://devnotes.tramline.app"
 compile_sass = true
 build_search_index = true
 generate_feed = true
