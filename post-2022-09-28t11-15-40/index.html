@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script defer data-domain="devnotes.tramline.app" src="https://plausible.io/js/script.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://devnotes.tramline.app/styles/styles.css">
+    <link rel="stylesheet" href="https://devnotes.tramline.app/styles/header.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://devnotes.tramline.app/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://devnotes.tramline.app/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://devnotes.tramline.app/favicon.png">
+    <title>Tramline | Engineering notes</title>
+    <style type="text/css">
+     body {
+       text-rendering: optimizeLegibility;
+       -webkit-font-smoothing: antialiased;
+       -moz-osx-font-smoothing: grayscale;
+     }
+    </style>
+  </head>
+
+  <body class="bg-tram-green-light bg-no-repeat bg-gradient-to-br min-h-screen border-b-8 border-tram-green">
+    
+<header>
+  <div data-collapse="small" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="nav-bar w-nav">
+    <div class="nav-container w-container">
+      <div class="logo-div">
+        <a href="https://tramline.app" aria-current="page" class="nav-logo w-inline-block w--current">
+          <img src="https://devnotes.tramline.app/images/logo.png" loading="eager" width="50" alt="logo" class="logo">
+        </a>
+      </div>
+      <nav role="navigation" class="nav-content w-nav-menu">
+        <div class="nav-menu">
+          <a href="/" aria-current="page" class="nav-link tramline w-nav-link w--current style-hNwNo" id="style-hNwNo">
+            Tramline
+            <p class="text-sm">engineering notes</p>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+    <div class="border-b mb-3"></div>
+    <main>
+      <div class="px-2">
+        <div class="mb-24 mt-16 px-4">
+          <h1 data-w-id="18a9bc4c-33dd-e424-566d-cf277b93ef10" class="text-center heading-large style-J5dMq my-8" id="style-J5dMq">
+            Short notes from engineering
+          </h1>
+          <div class="container max-w-[625px] mx-auto text-center
+                      prose prose-lg
+                      prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+                      hover:prose-a:border-slate-200">
+            <p>
+              Micro-posts on programming and patterns as we build <a href="https://tramline.app" target="_blank">Tramline</a> in public.
+              Follow this <a href="/atom.xml" target="_blank">feed</a> if you find these bits interesting.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+
+<article class="container max-w-[900px] mx-auto my-8 px-2">
+  <hr class="border-slate-200 mx-auto max-w-7xl">
+  <div class="my-8"></div>
+  <div class="md:flex">
+    <div class="md:basis-[100px] md:flex-grow-0 md:flex-shrink-0 md:mr-4 px-1 ml-3 mb-8">
+      <div class="font-medium my-2 leading-normal text-xs">
+        <div class="tracking-wide">2022 &#x2F; Sep 28 — 11:15</div>
+        <div class="mt-2 mb-2 underline">kitallis</div>
+        <a href="https://devnotes.tramline.app/post-2022-09-28t11-15-40/">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24">
+            <g fill="none" class="nc-icon-wrapper">
+              <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1 0 1.71-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="#212121">
+              </path>
+            </g>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="container max-w-[900px] mx-auto px-4">
+      <div class="md:flex-grow md:ml-4">
+        <div class="max-w-none
+                    prose prose-md
+                    prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+                    hover:prose-a:border-b-slate-200
+                    prose-pre:prose-code:prose-a:text-sm prose-code:prose-p:text-sm
+                    prose-h1:font-bold prose-h1:text-base
+                    prose-p:font-serif
+                    prose-p:prose-blockquote:font-sans
+                    prose-strong:font-sans
+                    prose-ol:font-serif
+                    prose-ul:font-serif">
+		      <p>There are a few tight, but rare-enough race-conditions lingering about and they are constantly bothering me. They just exist as <code>FIXMEs</code> in the code atm.</p>
+<p>Most of the these seem to be solvable by pessimistic row-locks, but I'm already dreading the littering of necessary but unintuitive placements of various row-locks throughout the code-base.</p>
+<p>Would modelling this as a pure declarative orchestrator help keep this in check?</p>
+<p>Not sure.</p>
+
+        </div>
+      </div>
+	  </div>
+  </div>
+</article>
+
+
+    </main>
+  </body>
+</html>

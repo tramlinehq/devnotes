@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title></title>
+    <link href="https://devnotes.tramline.app/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://devnotes.tramline.app"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-08-08T19:41:37+00:00</updated>
+    <id>https://devnotes.tramline.app/atom.xml</id>
+    <entry xml:lang="en">
+        <title></title>
+        <published>2023-08-08T19:41:37+00:00</published>
+        <updated>2023-08-08T19:41:37+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://devnotes.tramline.app/post-2023-08-08t19-41-37/" type="text/html"/>
+        <id>https://devnotes.tramline.app/post-2023-08-08t19-41-37/</id>
+        
+        <content type="html">&lt;p&gt;&lt;code&gt;then&lt;&#x2F;code&gt; in &lt;a href=&quot;https:&#x2F;&#x2F;apidock.com&#x2F;ruby&#x2F;v2_6_3&#x2F;Object&#x2F;then&quot;&gt;Ruby&lt;&#x2F;a&gt; feels like a little sister to the &lt;code&gt;as-&amp;gt;&lt;&#x2F;code&gt; &lt;a href=&quot;https:&#x2F;&#x2F;clojuredocs.org&#x2F;clojure.core&#x2F;as-%3E&quot;&gt;macro&lt;&#x2F;a&gt; from Clojure.&lt;&#x2F;p&gt;
+&lt;p&gt;Most of the API code (and several other parts) in Tramline make heavy use of &lt;code&gt;then&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;tramlinehq&#x2F;tramline&#x2F;blob&#x2F;main&#x2F;app&#x2F;libs&#x2F;installations&#x2F;github&#x2F;api.rb#L20&quot;&gt;example&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;tramlinehq&#x2F;tramline&#x2F;blob&#x2F;main&#x2F;app&#x2F;libs&#x2F;installations&#x2F;gitlab&#x2F;api.rb#L62&quot;&gt;example&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;tramlinehq&#x2F;tramline&#x2F;blob&#x2F;main&#x2F;app&#x2F;libs&#x2F;installations&#x2F;google&#x2F;firebase&#x2F;api.rb#L49&quot;&gt;example&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;There&#x27;s a couple of interesting things of note here.&lt;&#x2F;p&gt;
+&lt;p&gt;One, I think &lt;a href=&quot;https:&#x2F;&#x2F;ruby-doc.org&#x2F;core-2.7.0&#x2F;Proc.html#class-Proc-label-Numbered+parameters&quot;&gt;numbered params&lt;&#x2F;a&gt; have a lot of scope in removing some of the block cruft and overnaming of things across &lt;code&gt;then&lt;&#x2F;code&gt; blocks. Especially if the next in chain is visually obvious.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ruby&quot; style=&quot;background-color:#383838;color:#e6e1dc;&quot; class=&quot;language-ruby &quot;&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span style=&quot;color:#f6aa11;&quot;&gt;@&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d0d0ff;&quot;&gt;client&lt;&#x2F;span&gt;&lt;span&gt;.workflows(repo)
+&lt;&#x2F;span&gt;&lt;span&gt;       .then { fetch_workflows(_1) }
+&lt;&#x2F;span&gt;&lt;span&gt;       .then { pick_active(_1) }
+&lt;&#x2F;span&gt;&lt;span&gt;       .then { transform_keys(_1) }
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The above feels more natural and less noisy than naming each intermediate step with similar sounding variable names.&lt;&#x2F;p&gt;
+&lt;p&gt;The second one is a controversial (perhaps even wrong) point. It seems to me that since &lt;code&gt;then&lt;&#x2F;code&gt; is just a function, the general debuggability of something going wrong in the pipeline is easier to find out in the chain.&lt;&#x2F;p&gt;
+&lt;p&gt;My (now fading) experience with threading macro debuggability in Clojure has been less efficient; I end up adding taps and spies and macroexpands to figure out what part of the chain broke.&lt;&#x2F;p&gt;
+&lt;p&gt;I prefer an experience like:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;write a pipeline&lt;&#x2F;li&gt;
+&lt;li&gt;pipeline breaks in expression number 2&lt;&#x2F;li&gt;
+&lt;li&gt;error output nudges you in the direction of just tweaking expression number 2&lt;&#x2F;li&gt;
+&lt;li&gt;make the fix and the pipeline starts working again&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title></title>
+        <published>2023-01-18T13:41:44+00:00</published>
+        <updated>2023-01-18T13:41:44+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://devnotes.tramline.app/post-2023-01-18t13-41-44/" type="text/html"/>
+        <id>https://devnotes.tramline.app/post-2023-01-18t13-41-44/</id>
+        
+        <content type="html">&lt;p&gt;All these years of using Rails, I had no idea &lt;code&gt;has_one&lt;&#x2F;code&gt; did this.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;has_one.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;More importantly with a relationship like follows,&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ruby&quot; style=&quot;background-color:#383838;color:#e6e1dc;&quot; class=&quot;language-ruby &quot;&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span style=&quot;color:#86c20e;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;color:#ffc66d;&quot;&gt;Model &lt;&#x2F;span&gt;&lt;span style=&quot;color:#86c20e;&quot;&gt;&amp;lt; &lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;font-style:italic;color:#ffc66d;&quot;&gt;ActiveRecord
+&lt;&#x2F;span&gt;&lt;span&gt;  has_one &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;:build
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;end
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#86c20e;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;color:#ffc66d;&quot;&gt;Build &lt;&#x2F;span&gt;&lt;span style=&quot;color:#86c20e;&quot;&gt;&amp;lt; &lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;font-style:italic;color:#ffc66d;&quot;&gt;ActiveRecord
+&lt;&#x2F;span&gt;&lt;span&gt;  has_one_attached_file &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;:file
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;end
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;If I &lt;code&gt;create_build&lt;&#x2F;code&gt; on &lt;code&gt;Model&lt;&#x2F;code&gt; if one already exists, it will:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Delete that &lt;code&gt;Build&lt;&#x2F;code&gt;, create a new one and attach it to &lt;code&gt;Model&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Kickoff an &lt;code&gt;ActiveStorage::PurgeJob&lt;&#x2F;code&gt; and delete the file from GCS&#x2F;AWS&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;This is highly uncomfortable.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title></title>
+        <published>2023-01-10T14:58:17+00:00</published>
+        <updated>2023-01-10T14:58:17+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://devnotes.tramline.app/post-2023-01-10t14-58-17/" type="text/html"/>
+        <id>https://devnotes.tramline.app/post-2023-01-10t14-58-17/</id>
+        
+        <content type="html">&lt;p&gt;I have been using &lt;code&gt;return&lt;&#x2F;code&gt; a fair bit in transactions in Rails. In 7, these rollback the transaction and I use them as so.&lt;&#x2F;p&gt;
+&lt;p&gt;They obviously require very careful writing and to &lt;strong&gt;remember&lt;&#x2F;strong&gt; that the return actually just doesn&#x27;t jump out of the block, it cancels the transaction.&lt;&#x2F;p&gt;
+&lt;p&gt;I prefer the fact that &lt;code&gt;return&lt;&#x2F;code&gt; from 8 will throw an exception, but I&#x27;ve found that using &lt;code&gt;Github::Result&lt;&#x2F;code&gt; around transactions as a pattern comes pretty close or is better (in some cases) already.&lt;&#x2F;p&gt;
+&lt;p&gt;Consider this example code that creates and merges a pull request,&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ruby&quot; style=&quot;background-color:#383838;color:#e6e1dc;&quot; class=&quot;language-ruby &quot;&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6aa11;&quot;&gt;create_and_merge!
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;Result&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#86c20e;&quot;&gt;new&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;ok?: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;false&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;unless&lt;&#x2F;span&gt;&lt;span&gt; create.ok?
+&lt;&#x2F;span&gt;&lt;span&gt;  upserted_pull_request &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;=
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6aa11;&quot;&gt;@&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d0d0ff;&quot;&gt;new_pull_request&lt;&#x2F;span&gt;&lt;span&gt;.update_or_insert!(create.value)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  transaction &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;do
+&lt;&#x2F;span&gt;&lt;span&gt;    upserted_pull_request.close! &lt;&#x2F;span&gt;&lt;span style=&quot;color:#95815e;&quot;&gt;# close the PR
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;if&lt;&#x2F;span&gt;&lt;span&gt; merge.ok?
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;Result&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#86c20e;&quot;&gt;new&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;ok?: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;true&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;else
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;Result&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#86c20e;&quot;&gt;new&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;ok?: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;false&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;error: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c1be91;&quot;&gt;Failed!&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;end
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;end
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;end
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6aa11;&quot;&gt;create
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#95815e;&quot;&gt;# creates a PR and returns a Result
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;end
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6aa11;&quot;&gt;merge
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#95815e;&quot;&gt;# merges a PR and returns a Result
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;end
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;Result &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;Struct&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#86c20e;&quot;&gt;new&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;:ok?&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;:error&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;:value&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;keyword_init: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;true&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;One problem here is that we&#x27;re using custom &lt;code&gt;Result&lt;&#x2F;code&gt; objects which are not very chainable. But the other more shape-y problem is that we&#x27;re having to check the output from &lt;code&gt;merge&lt;&#x2F;code&gt;, return an ok-&lt;code&gt;Result&lt;&#x2F;code&gt; or else &lt;strong&gt;cancel&lt;&#x2F;strong&gt; the transaction and &lt;strong&gt;then&lt;&#x2F;strong&gt; return a not-ok-&lt;code&gt;Result&lt;&#x2F;code&gt;. This not only feels like excessive work but also the use of &lt;code&gt;return&lt;&#x2F;code&gt; is unfortunate to essentially carry out a rollback + value type scenario.&lt;&#x2F;p&gt;
+&lt;p&gt;With &lt;code&gt;Github::Result&lt;&#x2F;code&gt; we can rewrite it much more cleanly,&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ruby&quot; style=&quot;background-color:#383838;color:#e6e1dc;&quot; class=&quot;language-ruby &quot;&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6aa11;&quot;&gt;create_and_merge!
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;GitHub&lt;&#x2F;span&gt;&lt;span&gt;::&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;Result&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#86c20e;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span&gt;{ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#86c20e;&quot;&gt;raise &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6e9cbe;&quot;&gt;CreateError &lt;&#x2F;span&gt;&lt;span&gt;} &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;unless&lt;&#x2F;span&gt;&lt;span&gt; create.ok?
+&lt;&#x2F;span&gt;&lt;span&gt;   upserted_pull_request &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;=
+&lt;&#x2F;span&gt;&lt;span&gt;     &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6aa11;&quot;&gt;@&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d0d0ff;&quot;&gt;new_pull_request&lt;&#x2F;span&gt;&lt;span&gt;.update_or_insert!(create.value!)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;GitHub&lt;&#x2F;span&gt;&lt;span&gt;::&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;Result&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#86c20e;&quot;&gt;new &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;do
+&lt;&#x2F;span&gt;&lt;span&gt;     transaction &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;do
+&lt;&#x2F;span&gt;&lt;span&gt;       upserted_pull_request.close! &lt;&#x2F;span&gt;&lt;span style=&quot;color:#95815e;&quot;&gt;# close the PR
+&lt;&#x2F;span&gt;&lt;span&gt;       merge.value!
+&lt;&#x2F;span&gt;&lt;span&gt;     &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;end
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;end
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;end
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;As long as &lt;code&gt;merge&lt;&#x2F;code&gt; throws an exception, &lt;code&gt;value!&lt;&#x2F;code&gt; will raise it, rollback (throwing an exception will rollback) and opaquely pass it further up to the wrappper &lt;code&gt;Result&lt;&#x2F;code&gt;. This allows us to avoid &lt;code&gt;return&lt;&#x2F;code&gt; magic and ugly raises in the middle of the transaction block and chain the exceptions up.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title></title>
+        <published>2023-01-06T14:36:17+00:00</published>
+        <updated>2023-01-06T14:36:17+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://devnotes.tramline.app/post-2023-01-06t14-36-17/" type="text/html"/>
+        <id>https://devnotes.tramline.app/post-2023-01-06t14-36-17/</id>
+        
+        <content type="html">&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;txns-suck.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This is terrible.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title></title>
+        <published>2023-01-06T14:25:59+00:00</published>
+        <updated>2023-01-06T14:25:59+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://devnotes.tramline.app/post-2023-01-06t14-25-59/" type="text/html"/>
+        <id>https://devnotes.tramline.app/post-2023-01-06t14-25-59/</id>
+        
+        <content type="html">&lt;p&gt;I decided to add stricter linting to the codebase. Since I like what standard offers, I simply extended it with rails specific lints, in the following way:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;yaml&quot; style=&quot;background-color:#383838;color:#e6e1dc;&quot; class=&quot;language-yaml &quot;&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span style=&quot;color:#e8bf6a;&quot;&gt;require&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;  - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a5c261;&quot;&gt;standard
+&lt;&#x2F;span&gt;&lt;span&gt;  - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a5c261;&quot;&gt;rubocop-rails
+&lt;&#x2F;span&gt;&lt;span&gt;  - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a5c261;&quot;&gt;rubocop-rspec
+&lt;&#x2F;span&gt;&lt;span&gt;  - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a5c261;&quot;&gt;rubocop-performance
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e8bf6a;&quot;&gt;inherit_gem&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e8bf6a;&quot;&gt;standard&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a5c261;&quot;&gt;config&#x2F;ruby-3.0.yml
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e8bf6a;&quot;&gt;AllCops&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e8bf6a;&quot;&gt;TargetRubyVersion&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a5c261;&quot;&gt;3.1
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e8bf6a;&quot;&gt;NewCops&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a5c261;&quot;&gt;enable
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e8bf6a;&quot;&gt;Exclude&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;    - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a5c261;&quot;&gt;bin&#x2F;**&#x2F;*
+&lt;&#x2F;span&gt;&lt;span&gt;    - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a5c261;&quot;&gt;public&#x2F;**&#x2F;*
+&lt;&#x2F;span&gt;&lt;span&gt;    - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a5c261;&quot;&gt;vendor&#x2F;**&#x2F;*
+&lt;&#x2F;span&gt;&lt;span&gt;    - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a5c261;&quot;&gt;db&#x2F;schema.rb
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e8bf6a;&quot;&gt;Rails&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e8bf6a;&quot;&gt;Enabled&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6e9cbe;&quot;&gt;true
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e8bf6a;&quot;&gt;RSpec&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e8bf6a;&quot;&gt;Enabled&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6e9cbe;&quot;&gt;true
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e8bf6a;&quot;&gt;RSpec&#x2F;ExampleLength&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e8bf6a;&quot;&gt;Enabled&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6e9cbe;&quot;&gt;false
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e8bf6a;&quot;&gt;RSpec&#x2F;MultipleExpectations&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e8bf6a;&quot;&gt;Max&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a5c261;&quot;&gt;4
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e8bf6a;&quot;&gt;Performance&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e8bf6a;&quot;&gt;Enabled&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6e9cbe;&quot;&gt;true
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This ensures standard is used for ruby things, and rails, rspec and some other performance related checks in addition to it via rubocop.&lt;&#x2F;p&gt;
+&lt;p&gt;I came across this suggestion while fixing the 100 odd offenses it threw up,&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#383838;color:#e6e1dc;&quot;&gt;&lt;code&gt;&lt;span&gt;RSpec&#x2F;NamedSubject:
+&lt;&#x2F;span&gt;&lt;span&gt;  Name your test subject if you need to reference it explicitly.
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The fix,&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ruby&quot; style=&quot;background-color:#383838;color:#e6e1dc;&quot; class=&quot;language-ruby &quot;&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span&gt;subject(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;:run&lt;&#x2F;span&gt;&lt;span&gt;) { create(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;:releases_train_run&lt;&#x2F;span&gt;&lt;span&gt;) }
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;But what even is this? Isn&#x27;t this just a &lt;code&gt;let&lt;&#x2F;code&gt; really? You can&#x27;t really use the &lt;code&gt;is_expected.to&lt;&#x2F;code&gt; shortcut either since it&#x27;s now named. I cannot possibly make the claim that this reads better.&lt;&#x2F;p&gt;
+&lt;p&gt;I think it&#x27;s just one of those annoying rspec maximalisms.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title></title>
+        <published>2022-10-11T15:44:45+00:00</published>
+        <updated>2022-10-11T15:44:45+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://devnotes.tramline.app/post-2022-10-11t15-44-45/" type="text/html"/>
+        <id>https://devnotes.tramline.app/post-2022-10-11t15-44-45/</id>
+        
+        <content type="html">&lt;p&gt;Here&#x27;s a spectrum of componentizing views I&#x27;ve been thinking about lately (in Rails):&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Extract logical helpers and partials&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;They are often like stuffing away code inside a &lt;code&gt;Module&lt;&#x2F;code&gt; and calling it a refactor. But it is cheap and effective enough to start off with. You often run into &amp;quot;too many allocations&amp;quot; issues, with nested views and partials. They also don&#x27;t abstract state very well. Arguments for their limitations have been made ad naseam - &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;drapergem&#x2F;draper&quot;&gt;ex&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;text&quot; style=&quot;background-color:#383838;color:#e6e1dc;&quot; class=&quot;language-text &quot;&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&lt;span&gt;Completed 200 OK in 86ms (Views: 83.6ms | ActiveRecord: 1.3ms | Allocations: 29347)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;Presenter objects &#x2F; ViewComponents&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;Solid ideas here. Fair bit of upfront work required and you have to be meticulous about the granularity of your components. These claim to be very fast by precompiling templates at rails boot.&lt;&#x2F;p&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;SPAs, building JSX components (or whatever else is out there now)&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;I&#x27;m not convinced I&#x27;d need to do this. I think Stimulus &#x2F; Hotwired is powerful enough for all our needs for the forseeable future (famous last words). I still remember the joy of ripping out all the react from a &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;simpledotorg&#x2F;simple-server&quot;&gt;previous codebase&lt;&#x2F;a&gt; I worked on and rewrote them in a much simpler, basic markup and js.&lt;&#x2F;p&gt;
+&lt;p&gt;#1 ➡ #2 hopefuly in a few months time.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title></title>
+        <published>2022-10-06T12:23:54+00:00</published>
+        <updated>2022-10-06T12:23:54+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://devnotes.tramline.app/post-2022-10-06t12-23-54/" type="text/html"/>
+        <id>https://devnotes.tramline.app/post-2022-10-06t12-23-54/</id>
+        
+        <content type="html">&lt;p&gt;When I originally kicked things off, I added a lot of big transactions around various api-call-surrounding-database-ops. This was knowingly a cheap hack to avoid bad state changes and delaying the inevitable: careful and tedious handling of errors and control-flow.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;m now slowly refactoring things to unpack these big transactions and I realize many of them are actually unnecessary. I&#x27;m employing yet another cheap &lt;code&gt;Result&lt;&#x2F;code&gt; object to signify boundary-states,&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ruby&quot; style=&quot;background-color:#383838;color:#e6e1dc;&quot; class=&quot;language-ruby &quot;&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span&gt;Result &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;Struct&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#86c20e;&quot;&gt;new&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;:ok?&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;:error&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;:value&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;keyword_init: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;true&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6aa11;&quot;&gt;good_op
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;Result&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#86c20e;&quot;&gt;new&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;ok?: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;true&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;value: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a5c261;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;end
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6aa11;&quot;&gt;bad_op
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;Result&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#86c20e;&quot;&gt;new&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;ok?: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;false&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;error: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c1be91;&quot;&gt;Did not work&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#86c20e;&quot;&gt;end
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;operation.ok?
+&lt;&#x2F;span&gt;&lt;span&gt;operation.value
+&lt;&#x2F;span&gt;&lt;span&gt;operation.error
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This is a little bit silly, because it requires &lt;em&gt;you&lt;&#x2F;em&gt; to ensure that &lt;code&gt;value&lt;&#x2F;code&gt; is only present alongside the &lt;code&gt;ok?&lt;&#x2F;code&gt; and the others are falsey in the &lt;code&gt;error&lt;&#x2F;code&gt; case. But it is very simple and quick to get a refactor busted out.&lt;&#x2F;p&gt;
+&lt;p&gt;I have used &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;github&#x2F;github-ds#githubresult&quot;&gt;Github::Result&lt;&#x2F;a&gt; in the past, but recently discovered &lt;a href=&quot;https:&#x2F;&#x2F;dry-rb.org&#x2F;gems&#x2F;dry-monads&#x2F;1.3&quot;&gt;dry-rb&lt;&#x2F;a&gt; -- many of these look very sensible and immediately useful. Hopefully the next step!&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title></title>
+        <published>2022-10-05T00:19:39+00:00</published>
+        <updated>2022-10-05T00:19:39+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://devnotes.tramline.app/post-2022-10-05t00-19-39/" type="text/html"/>
+        <id>https://devnotes.tramline.app/post-2022-10-05t00-19-39/</id>
+        
+        <content type="html">&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;rubymine.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title></title>
+        <published>2022-09-28T11:15:40+00:00</published>
+        <updated>2022-09-28T11:15:40+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://devnotes.tramline.app/post-2022-09-28t11-15-40/" type="text/html"/>
+        <id>https://devnotes.tramline.app/post-2022-09-28t11-15-40/</id>
+        
+        <content type="html">&lt;p&gt;There are a few tight, but rare-enough race-conditions lingering about and they are constantly bothering me. They just exist as &lt;code&gt;FIXMEs&lt;&#x2F;code&gt; in the code atm.&lt;&#x2F;p&gt;
+&lt;p&gt;Most of the these seem to be solvable by pessimistic row-locks, but I&#x27;m already dreading the littering of necessary but unintuitive placements of various row-locks throughout the code-base.&lt;&#x2F;p&gt;
+&lt;p&gt;Would modelling this as a pure declarative orchestrator help keep this in check?&lt;&#x2F;p&gt;
+&lt;p&gt;Not sure.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title></title>
+        <published>2022-09-28T11:15:39+00:00</published>
+        <updated>2022-09-28T11:15:39+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://devnotes.tramline.app/post-2022-09-28t11-15-39/" type="text/html"/>
+        <id>https://devnotes.tramline.app/post-2022-09-28t11-15-39/</id>
+        
+        <content type="html">&lt;p&gt;The views currently are a hot mess, giant nested ERB templates.
+I&#x27;m not convinced of jumping into &lt;a href=&quot;https:&#x2F;&#x2F;viewcomponent.org&quot;&gt;ViewComponents&lt;&#x2F;a&gt; yet, since the shape of this UI is so nebulous and will definitely change dramatically and I do not want to deal with more objects and more abstractions and more code at the moment.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ll deal with the complex markup like it&#x27;s 1999.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title></title>
+        <published>2022-09-28T09:02:54+00:00</published>
+        <updated>2022-09-28T09:02:54+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://devnotes.tramline.app/post-2022-09-28t09-02-54/" type="text/html"/>
+        <id>https://devnotes.tramline.app/post-2022-09-28t09-02-54/</id>
+        
+        <content type="html">&lt;p&gt;It&#x27;s not terribly hard to come up with a state-machine DSL like &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;aasm&#x2F;aasm&quot;&gt;aasm&lt;&#x2F;a&gt;
+by hand, but the &lt;code&gt;ActiveRecord&lt;&#x2F;code&gt; support is very handy.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;m using it with an &lt;code&gt;enum&lt;&#x2F;code&gt; against a &lt;code&gt;status&lt;&#x2F;code&gt; field with the following options:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ruby&quot; style=&quot;background-color:#383838;color:#e6e1dc;&quot; class=&quot;language-ruby &quot;&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;column: :status&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;requires_lock: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;true&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;requires_new_transaction: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;false&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;enum: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;true&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f6f080;&quot;&gt;create_scopes: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;false
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The &lt;code&gt;requires_new_transaction&lt;&#x2F;code&gt; is &lt;code&gt;false&lt;&#x2F;code&gt; to avoid landing into unnecessary nested transactions. I&#x27;ll keep my transactions explicit and intentional.
+The &lt;code&gt;enum&lt;&#x2F;code&gt; allows me to play well with the Rails enum which already generates scopes, so I keep &lt;code&gt;create_scopes&lt;&#x2F;code&gt; off.&lt;&#x2F;p&gt;
+&lt;p&gt;The &lt;code&gt;requires_lock&lt;&#x2F;code&gt; is seemingly quite handy at first glance, since I require locking rows a fair bit because of the distributed nature of the app.
+But the level at which it locks is far too granular. I generally seem to require locking rows for far longer and more work than simply transitioning state and not everything can be sanely encapsulated in a &lt;code&gt;before&lt;&#x2F;code&gt; or &lt;code&gt;after&lt;&#x2F;code&gt;.
+I&#x27;d rather provide the library with methods that cause a state transition than the inverted way it currently operates: generating methods to transition for you and then locking within that event.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title></title>
+        <published>2022-09-26T11:37:01+00:00</published>
+        <updated>2022-09-26T11:37:01+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://devnotes.tramline.app/post-2022-09-26t11-37-01/" type="text/html"/>
+        <id>https://devnotes.tramline.app/post-2022-09-26t11-37-01/</id>
+        
+        <content type="html">&lt;p&gt;I&#x27;m finding keeping POROs seperated away from &lt;code&gt;models&#x2F;&lt;&#x2F;code&gt; a mental relief for some reason. I think I&#x27;m going to stick to it.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;dir.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title></title>
+        <published>2022-09-25T21:18:31+00:00</published>
+        <updated>2022-09-25T21:18:31+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://devnotes.tramline.app/post-2022-09-25t21-18-31/" type="text/html"/>
+        <id>https://devnotes.tramline.app/post-2022-09-25t21-18-31/</id>
+        
+        <content type="html">&lt;p&gt;The log streams feature in &lt;a href=&quot;https:&#x2F;&#x2F;render.com&quot;&gt;Render&lt;&#x2F;a&gt; is a little bit strange. From the &lt;a href=&quot;https:&#x2F;&#x2F;render.com&#x2F;docs&#x2F;log-streams#configuring-log-streams&quot;&gt;docs&lt;&#x2F;a&gt;,&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#383838;color:#e6e1dc;&quot;&gt;&lt;code&gt;&lt;span&gt;Render Log Streams forward logs from your web services,
+&lt;&#x2F;span&gt;&lt;span&gt;private services, background workers, databases,
+&lt;&#x2F;span&gt;&lt;span&gt;and cron jobs to any logging provider that supplies a TLS-enabled syslog drain.
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;I hooked this up with datadog and it is indeed a syslog drain across &lt;em&gt;all&lt;&#x2F;em&gt; services. This means my newly setup datadog is now filled with thousands of non-application related logs. Not only now do I have to filter all these out, but also pay for them.&lt;&#x2F;p&gt;
+&lt;p&gt;Surely a log streaming pipeline should have a minimum of a service-level (if not content-level) filtering as baseline features?&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
